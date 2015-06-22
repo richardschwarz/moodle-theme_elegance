@@ -134,115 +134,224 @@ $slide10caption = (empty($PAGE->theme->settings->bannertext10)) ? false : $PAGE-
 $slide10url = (empty($PAGE->theme->settings->bannerlinkurl10)) ? false : $PAGE->theme->settings->bannerlinkurl10;
 $slide10linktext = (empty($PAGE->theme->settings->bannerlinktext10)) ? false : $PAGE->theme->settings->bannerlinktext10;
 
+/* slideshow EXTRA STUFF */
+if (!empty($PAGE->theme->settings->slidenumber)) {
+    $slideNumber = $PAGE->theme->settings->slidenumber;
+} else {
+    $slideNumber = 0;
+}
+    
+if (!empty($PAGE->theme->settings->slidespeed)) {
+    $slideSpeed = $PAGE->theme->settings->slidespeed;
+} else {
+    $slideSpeed = '600';
+}
+
 $hasslideshow = ($hasslide1 || $hasslide2 || $hasslide3 || $hasslide4|| $hasslide5|| $hasslide6|| $hasslide7|| $hasslide8|| $hasslide9|| $hasslide10 ) ? true : false;
 ?>
 
 <?php if ($hasslideshow) { ?>
-<div class="banner has-dots" style="overflow: hidden; width: 100%; height: 415px;">
-	<ul style="width: 400%; position: relative; left: -200%; height: 415px;">
+<!-- Bootsrap 3 Carousel -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="<?php echo $slideSpeed; ?>">
+  <!-- Indicators -->
+ <?php if($slideNumber > 1) { ?>
+  <ol class="carousel-indicators">
+	<?php if ($hasslide1) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	<?php } ?>
+	<?php if ($hasslide2) { ?>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	<?php } ?>
+	<?php if ($hasslide3) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	<?php } ?>
+	<?php if ($hasslide4) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+	<?php } ?>
+	<?php if ($hasslide5) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+	<?php } ?>	
+	<?php if ($hasslide6) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="5"></li>
+	<?php } ?>
+	<?php if ($hasslide7) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="6"></li>
+	<?php } ?>
+	<?php if ($hasslide8) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="7"></li>
+	<?php } ?>
+	<?php if ($hasslide9) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="8"></li>
+	<?php } ?>
+	<?php if ($hasslide10) { ?>
+		<li data-target="#carousel-example-generic" data-slide-to="9"></li>
+	<?php } ?>
+	</ol>
+ <?php } ?>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+ <!-- put all your carousel items in this div bracket -->
+	<?php 
+	// if there's an item one:
+	if ($hasslide1) { ?>
+	<div class="item active">
+	  <img src="<?php echo $slide1image ?>" alt="<?php echo $slide1title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide1title ?></h1>
+        <p><?php echo $slide1caption ?></p>
+        <?php if($slide1linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide1url ?>" role="button"><?php echo $slide1linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+	
+	<?php 
+	// if there's an item two:
+	if ($hasslide2) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide2image ?>" alt="<?php echo $slide2title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide2title ?></h1>
+        <p><?php echo $slide2caption ?></p>
+        <?php if($slide2linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide2url ?>" role="button"><?php echo $slide2linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+    
+	<?php 
+	// 3:
+	if ($hasslide3) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide3image ?>" alt="<?php echo $slide3title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide3title ?></h1>
+        <p><?php echo $slide3caption ?></p>
+        <?php if($slide3linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide3url ?>" role="button"><?php echo $slide3linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+  
+  	<?php 
+	// 4:
+	if ($hasslide4) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide4image ?>" alt="<?php echo $slide4title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide4title ?></h1>
+        <p><?php echo $slide4caption ?></p>
+        <?php if($slide4linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide4url ?>" role="button"><?php echo $slide4linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
 
-		<?php if ($hasslide1) { ?>
-		<li id="slide1" style="background-image: url(<?php echo $slide1image ?>); background-size: 100%; width: 25%;">
-			<h1><?php echo $slide1title ?></h1>
-			<p><?php echo $slide1caption ?></p>
-			<?php if ($slide1linktext) { ?>
-				<a class="btn" href="<?php echo $slide1url ?>"><?php echo $slide1linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
+	<?php 
+	// 5:
+	if ($hasslide5) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide5image ?>" alt="<?php echo $slide5title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide5title ?></h1>
+        <p><?php echo $slide5caption ?></p>
+        <?php if($slide5linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide5url ?>" role="button"><?php echo $slide5linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+	
+	<?php 
+	// 6:
+	if ($hasslide6) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide6image ?>" alt="<?php echo $slide6title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide6title ?></h1>
+        <p><?php echo $slide6caption ?></p>
+        <?php if($slide6linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide6url ?>" role="button"><?php echo $slide6linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+	
+	<?php 
+	// 7:
+	if ($hasslide7) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide7image ?>" alt="<?php echo $slide7title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide7title ?></h1>
+        <p><?php echo $slide7caption ?></p>
+        <?php if($slide7linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide7url ?>" role="button"><?php echo $slide7linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+	
+	<?php 
+	// 8:
+	if ($hasslide8) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide8image ?>" alt="<?php echo $slide8title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide8title ?></h1>
+        <p><?php echo $slide8caption ?></p>
+        <?php if($slide8linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide8url ?>" role="button"><?php echo $slide8linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+	
+	<?php 
+	// 9:
+	if ($hasslide9) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide9image ?>" alt="<?php echo $slide9title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide9title ?></h1>
+        <p><?php echo $slide9caption ?></p>
+        <?php if($slide9linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide9url ?>" role="button"><?php echo $slide9linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+	
+	
+	<?php 
+	// 10:
+	if ($hasslide10) { ?>
+	<div class="item">
+	  <img src="<?php echo $slide10image ?>" alt="<?php echo $slide10title ?>" width="100%">
+      <div class="carousel-caption">
+        <h1><?php echo $slide10title ?></h1>
+        <p><?php echo $slide10caption ?></p>
+        <?php if($slide10linktext) { ?>
+        <p><a class="btn btn-lg btn-primary" href="<?php echo $slide10url ?>" role="button"><?php echo $slide10linktext ?></a></p>
+        <?php } ?>
+      </div>
+    </div>
+    <?php } ?>
+  <!-- end the carousel items -->
+  </div>
+ <?php if($slideNumber > 1) { ?>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <?php } ?>
+</div> <!-- /Carousel -->
 
-		<?php if ($hasslide2) { ?>
-		<li id="slide2" style="background-image: url(<?php echo $slide2image ?>); background-size: 100%; width: 25%;">
-			<h1><?php echo $slide2title ?></h1>
-			<p><?php echo $slide2caption ?></p>
-			<?php if ($slide2linktext) { ?>
-				<a class="btn" href="<?php echo $slide2url ?>"><?php echo $slide2linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-
-		<?php if ($hasslide3) { ?>
-		<li id="slide3" style="background-image: url(<?php echo $slide3image ?>); background-size: 100%; width: 25%;">
-			<h1><?php echo $slide3title ?></h1>
-			<p><?php echo $slide3caption ?></p>
-			<?php if ($slide3linktext) { ?>
-				<a class="btn" href="<?php echo $slide3url ?>"><?php echo $slide3linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-
-		<?php if ($hasslide4) { ?>
-		<li id="slide4" style="background-image: url(<?php echo $slide4image ?>); background-size: 100%; width: 25%;">
-			<h1><?php echo $slide4title ?></h1>
-			<p><?php echo $slide4caption ?></p>
-			<?php if ($slide4linktext) { ?>
-				<a class="btn" href="<?php echo $slide4url ?>"><?php echo $slide4linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-		<?php if ($hasslide5) { ?>
-		<li id="slide5" style="background-image: url(<?php echo $slide5image ?>); background-size: 100%; width: 25%;">
-			<h1><?php echo $slide5title ?></h1>
-			<p><?php echo $slide5caption ?></p>
-			<?php if ($slide5linktext) { ?>
-				<a class="btn" href="<?php echo $slide5url ?>"><?php echo $slide5linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-		<?php if ($hasslide6) { ?>
-		<li id="slide6" style="background-image: url(<?php echo $slide6image ?>); background-size: 100%; width: 26%;">
-			<h1><?php echo $slide6title ?></h1>
-			<p><?php echo $slide6caption ?></p>
-			<?php if ($slide6linktext) { ?>
-				<a class="btn" href="<?php echo $slide6url ?>"><?php echo $slide6linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-		<?php if ($hasslide7) { ?>
-		<li id="slide7" style="background-image: url(<?php echo $slide7image ?>); background-size: 100%; width: 27%;">
-			<h1><?php echo $slide7title ?></h1>
-			<p><?php echo $slide7caption ?></p>
-			<?php if ($slide7linktext) { ?>
-				<a class="btn" href="<?php echo $slide7url ?>"><?php echo $slide7linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-		<?php if ($hasslide8) { ?>
-		<li id="slide8" style="background-image: url(<?php echo $slide8image ?>); background-size: 100%; width: 28%;">
-			<h1><?php echo $slide8title ?></h1>
-			<p><?php echo $slide8caption ?></p>
-			<?php if ($slide8linktext) { ?>
-				<a class="btn" href="<?php echo $slide8url ?>"><?php echo $slide8linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-		<?php if ($hasslide9) { ?>
-		<li id="slide9" style="background-image: url(<?php echo $slide9image ?>); background-size: 100%; width: 29%;">
-			<h1><?php echo $slide9title ?></h1>
-			<p><?php echo $slide9caption ?></p>
-			<?php if ($slide9linktext) { ?>
-				<a class="btn" href="<?php echo $slide9url ?>"><?php echo $slide9linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-		<?php if ($hasslide10) { ?>
-		<li id="slide10" style="background-image: url(<?php echo $slide10image ?>); background-size: 100%; width: 210%;">
-			<h1><?php echo $slide10title ?></h1>
-			<p><?php echo $slide10caption ?></p>
-			<?php if ($slide10linktext) { ?>
-				<a class="btn" href="<?php echo $slide10url ?>"><?php echo $slide10linktext ?></a>
-			<?php } ?>
-		</li>
-		<?php } ?>
-
-	</ul>
-</div>
 <?php } ?>
