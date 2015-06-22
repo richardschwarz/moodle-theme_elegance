@@ -255,7 +255,7 @@ echo $OUTPUT->doctype() ?>
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
-
+<div class="wrapper">
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
 <nav role="navigation" class="navbar <?php echo $navbartype; ?>">
@@ -378,7 +378,8 @@ echo $OUTPUT->doctype() ?>
         </div>
     </div>
 </section>
-
+<div class="pusher"></div>
+</div>
 <footer id="page-footer" class="hidden-sm hidden-xs">
 	<?php require_once(dirname(__FILE__).'/includes/footer.php'); ?>
 </footer>
